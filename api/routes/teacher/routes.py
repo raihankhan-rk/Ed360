@@ -1,10 +1,17 @@
 from flask import Blueprint, request, url_for, session, redirect
-from datetime import datetime
 from flask_cors import cross_origin
+
+from datetime import datetime
+from pytz import timezone
+
 from api.model.noticeboardmodel import NoticeBoardModel, NoticeModel
 from api.schema.noticeboard import NoticeBoardSchema
-from api.services.database.notice import Notice
-from pytz import timezone
+
+from api.model.assignmentsmodel import AssignmentList, Assignment
+from api.schema.assignments import AssignmentListSchema
+
+from api.services.database import Teachers, Notice, Assignments, Students
+
 
 teacher_bp = Blueprint('teacher', __name__)
 
@@ -29,7 +36,7 @@ def get_notices():
         return redirect(url_for("auth.login", redirect_uri=url_for(".get_notices")))
 
 
-@teacher_bp.route("/set_notice/", methods=['GET', 'POST'])
+@teacher_bp.route("/set_notice/", methods=['POST'])
 @cross_origin()
 def set_notice():
     if session:
@@ -49,4 +56,61 @@ def set_notice():
 
         return "Data received", 200
     else:
-        return redirect(url_for("auth.login", redirect_uri=url_for(".get_notices")))
+        return redirect(url_for("auth.login", redirect_uri=url_for(".set_notice")))
+
+
+@teacher_bp.route("/assignments/")
+@cross_origin()
+def get_assignments():
+    if session:
+        assignmentsAssigned = AssignmentList()
+        teacher = Teachers.objects(pk=session["user"]["userinfo"]["sub"][6:]).first()
+        for assignmentOID in teacher.assignments:
+            assignmentOID = str(assignmentOID)
+            assignmentOBJ = Assignments.objects(pk=assignmentOID).first()
+            assignment = Assignment(assignmentOBJ.assignedTo, assignmentOBJ.assignedBy, assignmentOBJ.data,
+                                    assignmentOBJ.date, assignmentOBJ.time, assignmentOBJ.assignmentID)
+            assignment.assignedToMod()
+            assignmentsAssigned.assignments.append(assignment)
+
+        return AssignmentListSchema().dumps(assignmentsAssigned), 200
+
+    else:
+        return redirect(url_for("auth.login", redirect_uri=url_for(".get_assignments")))
+
+
+@teacher_bp.route("/set_assignment/", methods=['POST'])
+@cross_origin()
+def set_assignment():
+    if session:
+        if request.method == 'post' or request.method == 'POST':
+            resp = request.get_json()
+            assignmentID = str(int(Assignments.objects.last().assignmentID) + 1).zfill(4)
+
+            data = resp['data']
+
+            now = datetime.now(timezone("Asia/Kolkata"))
+            date = now.strftime("%d/%m/%Y")
+            time = now.strftime("%H:%M")
+
+            assignedBy = session["user"]["userinfo"]["sub"][6:]
+
+            assignedTo = []
+            for i in resp[assignedTo]:
+                assignedTo.append(Students.objects(name=i).first().pk)
+
+            assignment = Assignments(assignedTo, assignedBy, data, date, time, assignmentID)
+            assignment.save()
+
+            for i in assignedTo:
+                Students.objects(pk=i).first().update_one(push_assignments=assignment.pk)
+
+            Teachers.objects(pk=session["user"]["userinfo"]["sub"][6:]).first().update_one(push_assignments=assignment.pk)
+
+        return "Data received", 200
+
+    else:
+        return redirect(url_for("auth.login", redirect_uri=url_for(".set_assignment")))
+
+
+
