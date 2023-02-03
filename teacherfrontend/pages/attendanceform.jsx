@@ -1,8 +1,8 @@
 import React,{ useEffect } from "react";
 import Primarybutt from "../components/utils/primarybutt";
 //import components
-import MCQ from "../components/Utils/mcq";
-import SCQ from "../components/Utils/scq";
+import MCQ from "../components/utils/mcq";
+import SCQ from "../components/utils/scq";
 import Body from "../components/Body";
 import Textarea from "../components/Utils/textarea";
 
