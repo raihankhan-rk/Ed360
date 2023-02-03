@@ -4,7 +4,7 @@ import Primarybutt from "../components/utils/primarybutt";
 import MCQ from "../components/utils/mcq";
 import SCQ from "../components/utils/scq";
 import Body from "../components/Body";
-import Textarea from "../components/Utils/textarea";
+import Textarea from "../components/utils/textarea";
 
 Textarea.defaultProps = {
   question: "Question"
