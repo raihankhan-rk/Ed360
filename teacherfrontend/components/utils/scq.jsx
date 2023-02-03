@@ -1,4 +1,5 @@
 import React, { useState }  from "react";
+import Image from "next/image";
 
 export default function SCQ(props) {
   const [image, setImage] = useState(null);
@@ -75,7 +76,7 @@ export default function SCQ(props) {
             <div>
               {image ? (
                 
-                <img
+                <Image
                   src={image}
                   onClick={() => setShowModal(true)}
                   className="cursor-pointer w-full my-8 rounded-2xl hover:brightness-75 transition-all ease-out duration-200"
@@ -93,7 +94,7 @@ export default function SCQ(props) {
                   >
                     x
                   </span>
-                  <img
+                  <Image
                     src={image}
                     className=" w-[80%] max-w-3xl "
                     alt="uploaded"

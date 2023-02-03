@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Textarea from './textarea';
 import Nodelete from '../textareanodelete';
 
-export default function () {
+export default function CreateFunction() {
   const [image, setImage] = useState(null);
   const [showModal, setShowModal] = useState(false);
  

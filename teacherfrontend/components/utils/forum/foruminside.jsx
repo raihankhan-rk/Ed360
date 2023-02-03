@@ -11,7 +11,9 @@ function Foruminside(props){
         date={props.doubtData.date} name={props.doubtData.name} img={props.doubtData.img}/>
 
         {props.doubtData.answers.map((ans) => (
-              <Insideanswers key={ans.aid} name={ans.name} answer={ans.answer} date={ans.date} img={ans.img} />
+            <div key={ans.aid}>
+                <Insideanswers name={ans.name} answer={ans.answer} date={ans.date} img={ans.img} />
+            </div>
             ))}
         </div>
         

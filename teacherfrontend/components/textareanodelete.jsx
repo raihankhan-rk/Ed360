@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
+import Image from "next/image";
 
 function Nodelete(props){
     const [showModal, setShowModal] = useState(false);
@@ -117,7 +118,7 @@ function Nodelete(props){
         {/* image rendering on upload */}
         <div>
           {pic ? (
-            <img
+            <Image
               src={pic}
               onClick={() => setShowModal(true)}
               className="cursor-pointer w-full my-8 rounded-2xl hover:brightness-75 transition-all ease-out duration-200"
@@ -135,7 +136,7 @@ function Nodelete(props){
               >
                 x
               </span>
-              <img src={pic} className=" w-[80%] max-w-3xl " alt="uploaded" />
+              <Image src={pic} className=" w-[80%] max-w-3xl " alt="uploaded" />
             </div>
           </>
         ) : null}
