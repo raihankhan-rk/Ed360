@@ -4,13 +4,13 @@ from flask_cors import cross_origin
 from datetime import datetime
 from pytz import timezone
 
-from api.model.noticeboardmodel import NoticeBoardModel, NoticeModel
-from api.schema.noticeboard import NoticeBoardSchema
+from teacherBackend.api.model.noticeboardmodel import NoticeBoardModel, NoticeModel
+from teacherBackend.api.schema.noticeboard import NoticeBoardSchema
 
-from api.model.assignmentsmodel import AssignmentList, Assignment
-from api.schema.assignments import AssignmentListSchema
+from teacherBackend.api.model.assignmentsmodel import AssignmentList, Assignment
+from teacherBackend.api.schema.assignments import AssignmentListSchema
 
-from api.services.database import Teachers, Notice, Assignments, Students
+from teacherBackend.api.services.database import Teachers, Notice, Assignments, Students
 
 teacher_bp = Blueprint('teacher', __name__)
 

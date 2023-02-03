@@ -1,4 +1,4 @@
-from api.services.__init__ import db
+from teacherBackend.api.services.__init__ import db
 
 
 class Assignments(db.Document):

@@ -11,9 +11,9 @@ app.config.from_pyfile('config.py')
 
 CORS(app)
 
-from api.routes.authentication.routes import register_auth_routes, auth_bp
-from api.routes.home import home_api
-from api.routes.teacher.routes import teacher_bp
+from teacherBackend.api.routes.authentication.routes import register_auth_routes, auth_bp
+from teacherBackend.api.routes.home import home_api
+from teacherBackend.api.routes.teacher.routes import teacher_bp
 
 oauth = OAuth(app)
 oauth.register(
