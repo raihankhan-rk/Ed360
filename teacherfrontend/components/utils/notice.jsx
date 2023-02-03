@@ -17,7 +17,7 @@ function Notice(props){
         {noticeArray.slice(0).reverse().map((notice) => (
 
             // each card
-            <div className="bg-pale text-lg rounded-2xl my-4 p-8">
+            <div key={notice.id} className="bg-pale text-lg rounded-2xl my-4 p-8">
                 <p className="whitespace-pre-wrap my-2 font-[Montserrat] text-accent">{notice.data}</p>
                 {notice.fileURL===null?null:<img className="w-4/12 my-2" src={notice.fileURL} alt="file" />}
                 <h6 className="font-[Montserrat] text-primary">{notice.time} {notice.date}</h6>
