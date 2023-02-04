@@ -58,12 +58,14 @@ def set_notice():
     #     return redirect(url_for("auth.login", redirect_uri=url_for(".set_notice")))
 
 
-@teacher_bp.route("/assignments/")
+@teacher_bp.route("/assignments/", methods=['POST'])
 @cross_origin()
 def get_assignments():
-    if session:
+    # if session:
+    if request.method == 'post' or request.method == 'POST':
+        resp = request.get_json()
         assignmentsAssigned = AssignmentList()
-        teacher = Teachers.objects(pk=session["user"]["userinfo"]["sub"][6:]).first()
+        teacher = Teachers.objects(name=resp['name']).first()
         for assignmentOID in teacher.assignments:
             assignmentOID = str(assignmentOID)
             assignmentOBJ = Assignments.objects(pk=assignmentOID).first()
@@ -74,46 +76,46 @@ def get_assignments():
 
         return AssignmentListSchema().dumps(assignmentsAssigned), 200
 
-    else:
-        return redirect(url_for("auth.login", redirect_uri=url_for(".get_assignments")))
+    # else:
+    #     return redirect(url_for("auth.login", redirect_uri=url_for(".get_assignments")))
 
 
 @teacher_bp.route("/set_assignment/", methods=['POST'])
 @cross_origin()
 def set_assignment():
-    if session:
-        if request.method == 'post' or request.method == 'POST':
-            resp = request.get_json()
-            assignmentID = str(int(Assignments.objects.last().assignmentID) + 1).zfill(4)
+    # if session:
+    if request.method == 'post' or request.method == 'POST':
+        resp = request.get_json()
+        assignmentID = str(int(Assignments.objects.last().assignmentID) + 1).zfill(4)
 
-            data = resp['data']
+        data = resp['data']
 
-            now = datetime.now(timezone("Asia/Kolkata"))
-            date = now.strftime("%d/%m/%Y")
-            time = now.strftime("%H:%M")
+        now = datetime.now(timezone("Asia/Kolkata"))
+        date = now.strftime("%d/%m/%Y")
+        time = now.strftime("%H:%M")
 
-            assignedBy = session["user"]["userinfo"]["sub"][6:]
+        assignedBy = Teachers.objects(name=resp['name']).first().pk
 
-            assignedTo = []
-            for i in resp[assignedTo]:
-                assignedTo.append({'studentID': Students.objects(name=i).first().pk,
-                                   'isChecked': False,
-                                   'isSubmitted': False,
-                                   'points': resp['points'],
-                                   'data': "",
-                                   'date': date,
-                                   'time': time})
+        assignedTo = []
+        for i in resp[assignedTo]:
+            assignedTo.append({'studentID': Students.objects(name=i).first().pk,
+                               'isChecked': False,
+                               'isSubmitted': False,
+                               'points': resp['points'],
+                               'data': "",
+                               'date': date,
+                               'time': time})
 
             assignment = Assignments(assignedTo, assignedBy, data, date, time, assignmentID)
             assignment.save()
 
-            for i in assignedTo:
-                Students.objects(pk=i).first().update_one(push_assignments=assignment.pk)
+        for i in assignedTo:
+            Students.objects(pk=i).first().update_one(push_assignments=assignment.pk)
 
-            Teachers.objects(pk=session["user"]["userinfo"]["sub"][6:]).first().update_one(
-                push_assignments=assignment.pk)
+        Teachers.objects(pk=session["user"]["userinfo"]["sub"][6:]).first().update_one(
+            push_assignments=assignment.pk)
 
-        return "Data received", 200
+    return "Data received", 200
 
-    else:
-        return redirect(url_for("auth.login", redirect_uri=url_for(".set_assignment")))
+    # else:
+    #     return redirect(url_for("auth.login", redirect_uri=url_for(".set_assignment")))
