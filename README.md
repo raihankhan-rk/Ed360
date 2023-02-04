@@ -9,9 +9,7 @@
 
 🟢 **Student's Dashboard** - https://padhai-crow.study/
 
-🟢 **GitHub Repo:**
-
-https://github.com/raihankhan-rk/Ed360
+🟢 **GitHub Repo** - https://github.com/raihankhan-rk/Ed360
 
 ## 🔰 What is the Problem?
 
