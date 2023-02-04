@@ -1,7 +1,9 @@
-import React, { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function MCQ(props, { remove }) {
+import { storyblokEditable } from "@storyblok/react";
+
+export default function MCQ({blok}) {
   const [image, setImage] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -11,23 +13,20 @@ export default function MCQ(props, { remove }) {
   };
 
   return (
-    <div className="bg-pale rounded-xl my-4 py-10">
+    <div className="bg-pale rounded-xl my-4 py-10" {...storyblokEditable(blok)}>
       {/* Content Container */}
       <div className="w-11/12 m-auto">
         {/* heading, file upload, publish */}
         <div className="flex flex-row justify-between items-center w-full">
           <label
-            for={`Question ${props.index}`}
+            for={`Question`}
             className="text-3xl font-[Montserrat] font-medium text-accent"
           >
-            Question - {props.item + 1} | MCQ
+            {blok.question}
           </label>
           <div className="flex flex-row gap-4 justify-center items-center">
             {/* delete button */}
             <button
-              onClick={(e) => {
-                props.remove(props.item, e);
-              }}
               className="bg-white rounded-full w-[53px] h-[53px] flex justify-center items-center"
             >
               <svg
@@ -109,13 +108,13 @@ export default function MCQ(props, { remove }) {
                 for="Question"
                 className="text-3xl font-[Montserrat] font-medium text-accent hidden"
               >
-                Question | MCQ
+                {blok.question}
               </label>
             </div>
-            <textarea
+            {/* <textarea
               className="w-full mx-auto rounded-3xl text-lg resize-none font-[Montserrat] p-5 h-[15vw]"
               placeholder="Type Something..."
-            ></textarea>
+            ></textarea> */}
           </div>
 
           <div className="py-2">
@@ -124,14 +123,14 @@ export default function MCQ(props, { remove }) {
                 for="Question"
                 className="text-2xl font-[Montserrat] font-medium text-accent"
               >
-                Option-1
+                {blok.option1}
               </label>
             </div>
-            <input
+            {/* <input
               type="text"
               className="w-full text-lg mx-auto rounded-3xl resize-none font-[Montserrat] p-3"
               placeholder="Type Something..."
-            ></input>
+            ></input> */}
           </div>
 
           <div className="py-2">
@@ -140,14 +139,14 @@ export default function MCQ(props, { remove }) {
                 for="Question"
                 className="text-2xl font-[Montserrat] font-medium text-accent"
               >
-                Option-2
+                {blok.option2}
               </label>
             </div>
-            <input
+            {/* <input
               type="text"
               className="w-full text-lg mx-auto rounded-3xl resize-none font-[Montserrat] p-3"
               placeholder="Type Something..."
-            ></input>
+            ></input> */}
           </div>
 
           <div className="py-2">
@@ -156,14 +155,14 @@ export default function MCQ(props, { remove }) {
                 for="Question"
                 className="text-2xl font-[Montserrat] font-medium text-accent"
               >
-                Option-3
+                {blok.option3}
               </label>
             </div>
-            <input
+            {/* <input
               type="text"
               className="w-full text-lg mx-auto rounded-3xl resize-none font-[Montserrat] p-3"
               placeholder="Type Something..."
-            ></input>
+            ></input> */}
           </div>
 
           <div className="py-2">
@@ -172,14 +171,14 @@ export default function MCQ(props, { remove }) {
                 for="Question"
                 className="text-2xl font-[Montserrat] font-medium text-accent"
               >
-                Option-4
+                {blok.option4}
               </label>
             </div>
-            <input
+            {/* <input
               type="text"
               className="w-full text-lg mx-auto rounded-3xl resize-none font-[Montserrat] p-3"
               placeholder="Type Something..."
-            ></input>
+            ></input> */}
           </div>
         </form>
       </div>

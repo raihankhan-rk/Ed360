@@ -1,7 +1,9 @@
-import React, { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function Textarea(props) {
+import { storyblokEditable } from "@storyblok/react";
+
+export default function Textarea({blok}) {
   const [image, setImage] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -11,23 +13,20 @@ export default function Textarea(props) {
   };
 
   return (
-    <div className="bg-pale rounded-xl my-4 py-5 mx-auto">
+    <div className="bg-pale rounded-xl my-4 py-5" {...storyblokEditable(blok)}>
       {/* Content Container */}
       <div className="w-11/12 m-auto">
         {/* heading, file upload, publish */}
         <div className="flex flex-row justify-between items-center w-full">
           <label
-            for={`Question ${props.item}`}
+            for={'Question'}
             className="text-3xl font-[Montserrat] font-medium text-accent"
           >
-            Question - {props.item + 1} | Text Area
+            {blok.question}
           </label>
           <div className="flex flex-row gap-4 justify-center items-center">
             {/* delete button */}
             <button
-              onClick={(e) => {
-                props.remove(props.item, e);
-              }}
               className="bg-white rounded-full w-[53px] h-[53px] flex justify-center items-center"
             >
               <svg
@@ -109,7 +108,7 @@ export default function Textarea(props) {
               for="Question"
               className="text-3xl font-[Montserrat] font-medium text-accent hidden"
             >
-              Question | MCQ
+              {blok.question}
             </label>
           </div>
           <textarea spellCheck="true"
