@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-const baseURL = "https://ed360-student-backend.vercel.app/api/student/apyhub/"
+const baseURL = "https://ed360-student-backend.vercel.app/api/apyHub/getAttendanceChart/"
 
 export default function AttendanceMeter(props) {
   const [link,setLink] = useState("");
@@ -11,10 +11,10 @@ export default function AttendanceMeter(props) {
   // const [post, setPost] = useState([]);
   useEffect(() => {
     axios.post(baseURL, {
-      present: '10',
-      absent: '90'
+      present: 80,
+      absent: 20
     }).then((response) => {
-      console.log(response.data);
+      console.log("Backend Data:", response.data);
       setLink(response.data)
       response
     }, (error) => {
@@ -22,8 +22,8 @@ export default function AttendanceMeter(props) {
     });
   }, []);
 
-  return (<div className='pb-20 w-10/12 mx-auto text-center'>
-    <Image src={link} className="w-4/12"></Image>
+  return (<div className='pb-20 w-10/12 mx-auto text-center flex justify-center items-center'>
+    <img src={link.data} alt="dfgh" className="w-11/12"/>
     </div>
   )
 }

@@ -1,8 +1,37 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Body from '../components/Layouts/Body'
 import NoticeCard from '../components/utils/notices/noticeCard'
+import { MutatingDots } from 'react-loader-spinner';
+import axios from 'axios';
+
+
 
 export default function notices() {
+
+  const baseURL = "https://ed360-backend.vercel.app/api/teacher/noticeboard/";
+
+  const [post, setPost] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
+  const loadingHandle = (e)=>{
+    setLoading(e);
+  }
+
+
+  useEffect(() => {
+    loadingHandle(true);
+    const getPostData = async () => {
+      const {data: res} = await axios.get(baseURL);
+      console.log("Post RES: ", res);
+      setPost(res.notices);
+      console.log("Response: ",res);
+      loadingHandle(false);
+    };
+    getPostData();
+  }, []);
+
+  console.log({post})
+  if (!post) return null;
 
   const notices = [
     {
@@ -41,11 +70,27 @@ export default function notices() {
 
   return (
     <Body title="Notices">
-      {
+      {/* {
         notices.map((notice)=>(
           <NoticeCard key={notice.id} title={notice.title} description={notice.description} image={notice.image} time={notice.time} teacher={notice.teacher}/>
         ))
-      }
+      } */}
+      {isLoading?
+        <div className='flex items-center justify-center'>
+          <MutatingDots 
+            height="100"
+            width="100"
+            color="#6A72FA"
+            secondaryColor= '#9999EE'
+            radius='12.5'
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>: null}
+        {console.log("YAY: ", post)}
+          <NoticeCard notice={post}/>
     </Body>
   )
 }

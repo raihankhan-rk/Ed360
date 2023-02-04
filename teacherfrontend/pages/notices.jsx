@@ -8,7 +8,7 @@ import { useState } from 'react';
 import loader from '../assets/loader.gif';
 import { MutatingDots } from 'react-loader-spinner';
 
-const baseURL = "https://ed360-backend.vercel.app/api/teacher/noticeboard/";
+const baseURL = "https://ed360-backend.vercel.app/api/teacher/noticeboard/";  
 
 export default function Notices() {
   const [post, setPost] = useState([]);
