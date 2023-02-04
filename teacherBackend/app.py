@@ -14,6 +14,7 @@ CORS(app)
 from api.routes.authentication.routes import register_auth_routes, auth_bp
 from api.routes.home import home_api
 from api.routes.teacher.routes import teacher_bp
+from api.routes.apyhub.routes import apyHub_bp
 
 oauth = OAuth(app)
 oauth.register(
@@ -37,6 +38,7 @@ def root():
 app.register_blueprint(home_api, url_prefix='/api')
 app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(teacher_bp, url_prefix="/api/teacher")
+app.register_blueprint(apyHub_bp, url_prefix="/api/apyHub")
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
