@@ -3,17 +3,17 @@
 ![](https://res.cloudinary.com/dj3p6sirz/image/upload/v1675548046/ed360_tdhymm.png)
 
 
-## Live Demo:
+## 🔰 Live Demo:
 
-**Teacher's Dashboard** - https://ed360-teacher-frontend.vercel.app/
+🟢 **Teacher's Dashboard** - https://ed360-teacher-frontend.vercel.app/
 
-**Student's Dashboard** - https://padhai-crow.study/
+🟢 **Student's Dashboard** - https://padhai-crow.study/
 
-**GitHub Repo:**
+🟢 **GitHub Repo:**
 
 https://github.com/raihankhan-rk/Ed360
 
-## What is the Problem?
+## 🔰 What is the Problem?
 
 There are several problems that students face on a day to day basis that affect their academic success.
 
@@ -27,7 +27,7 @@ There are several problems that students face on a day to day basis that affect 
 
 These problems leads to missed deadlines and a lack of productivity, difficult to effectively complete assignments, and ruins the overall learning experience.
 
-## Whats the Solution?
+## 🔰 Whats the Solution?
 
 Our solution **Ed360** is a is a platform that can help students better manage their studies, by providing them **REWARDS** and **INCENTIVES** for
 
@@ -39,7 +39,7 @@ Our solution **Ed360** is a is a platform that can help students better manage t
 
 - Solving doubts of fellow batchmates
 
-## Screenshots:
+## 🔰 Screenshots:
 
 **Teacher's Dashboard**
 -
@@ -71,7 +71,7 @@ Our solution **Ed360** is a is a platform that can help students better manage t
 
 ---
 
-## Tech Stack Used:
+## 🔰 Tech Stack Used:
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -89,7 +89,7 @@ Our solution **Ed360** is a is a platform that can help students better manage t
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
 
 
-## Let's Talk Features:
+## 🔰 Let's Talk Features:
 
 We have a varied range of utilities in our app to keep incentivising students and keep them in the loop of learning.
 
@@ -101,7 +101,7 @@ We have a varied range of utilities in our app to keep incentivising students an
 
 **Marketplace** - Students having enough points can avail heavy discounts in the marketplace.
 
-## The Team Behind It:
+## 🔰 The Team Behind It:
 
 - [Raihan Khan](https://raihankhan.dev) (Backend Developer)
 
@@ -111,7 +111,7 @@ We have a varied range of utilities in our app to keep incentivising students an
 
 - [Sayak Sarkar](https://www.linkedin.com/in/sayaksarkar02/) (Frontend Developer)
 
-## Immediate Future Improvements:
+## 🔰 Immediate Future Improvements:
 
 - Certificates as SBTs (Soul Bound Tokens).
 
