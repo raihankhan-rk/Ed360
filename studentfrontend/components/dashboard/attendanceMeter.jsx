@@ -1,14 +1,25 @@
 import React from 'react'
-import {Circle, Line } from 'rc-progress'
+import axios from 'axios'
+import { useState } from 'react'
+import Image from 'next/image'
 
+const baseURL = "https://ed360-student-backend.vercel.app/api/student/apyhub/"
 
 export default function AttendanceMeter(props) {
-  const high="#6ed849";
-  const low= "#ff1919";
-  const mid="#ffb342";
+  
+  const [post, setPost] = useState([]);
+
+  axios.post(baseURL, {
+    present: '10',
+    absent: '90'
+  }).then((response) => {
+    console.log(response.data);
+  }, (error) => {
+    console.log(error);
+  });
+
   return (<div className='pb-20 w-10/12 mx-auto text-center'>
-    <Line percent={props.percent} strokeWidth={4} trailWidth={4} strokeColor={props.percent>=75? high: props.percent<75 && props.percent>=40? mid: low} />
-    <h2 className='font-[Montserrat] font-medium text-xl mt-2'>{props.percent}%</h2>
+    {/* <Image src={res} className="w-4/12"></Image> */}
     </div>
   )
 }
