@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, session, redirect
+from flask import Blueprint, request, session
 from flask_cors import cross_origin
 
 from datetime import datetime
