@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import Dashboard from './dashboard'
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
+      <Dashboard/>
     </>
   )
 }
