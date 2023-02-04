@@ -17,7 +17,7 @@ export default function Assignments({assignment}) {
     <Body title="Assignments">
         <div className='flex flex-col'>
           {assignment.map((assignments)=>(
-            <div className='grid grid-flow-col grid-cols-6'>
+            <div key={assignments.id} className='grid grid-flow-col grid-cols-6'>
               <div className='mx-auto my-auto'>
                 <h1 className='font-[Montserrat] text-gray-500 text-[3vw]'>10:30</h1>
                 </div>

@@ -29,7 +29,7 @@ export const getStaticProps = async (context) => {
 }
 
 
-const Assignment = ({assignment}) => {
+const Assignment = () => {
     return <div>
         <Body title="Assignments">
             <div className="mx-auto bg-pale w-11/12 h-[200px] mt-8 rounded-xl">
