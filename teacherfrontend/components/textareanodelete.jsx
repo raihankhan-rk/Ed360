@@ -9,6 +9,10 @@ function Nodelete(props){
     const [pic, setPic] = useState(null);
     const [formData, setFormData] = useState("");
 
+
+    const apiLink1 = 'https://ed360-backend.vercel.app/api/teacher/set_notice/';
+    const apiLink2 = 'https://ed360-teacher-backend.vercel.app/api/teacher/set_notice/';
+
   const  handleFormSubmit = async (event) => {
     event.preventDefault();
     props.load(true);
@@ -19,7 +23,7 @@ function Nodelete(props){
       isFile: pic===null? false:true,
       fileURL: pic
     };
-    const {data} = await axios.post('https://ed360-backend.vercel.app/api/teacher/set_notice/', postData);
+    const {data} = await axios.post(apiLink2, postData);
     console.log("server return data: ",data);
     props.func(postData)
     setFormData("");
@@ -118,7 +122,7 @@ function Nodelete(props){
         {/* image rendering on upload */}
         <div>
           {pic ? (
-            <Image
+            <img
               src={pic}
               onClick={() => setShowModal(true)}
               className="cursor-pointer w-full my-8 rounded-2xl hover:brightness-75 transition-all ease-out duration-200"
