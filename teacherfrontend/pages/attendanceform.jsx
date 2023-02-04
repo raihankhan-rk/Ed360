@@ -26,8 +26,7 @@ export default function Attendance({story}) {
 
 export async function getStaticProps() {
   
-  let { data } = await get_storyblok()
-  console.log(data)
+  let data = await get_storyblok()
 
   return {
     props: {
