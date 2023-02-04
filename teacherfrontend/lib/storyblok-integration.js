@@ -1,3 +1,5 @@
+import { getStoryblokApi } from "@storyblok/react";
+
 export async function get_storyblok() {
     let slug = "attendance";
 

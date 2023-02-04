@@ -3,7 +3,7 @@ import AttendanceConfig from "../components/attendanceconfig";
 import styles from "../styles/Home.module.css";
 import { get_storyblok } from "../lib/storyblok-integration";
 
-import { getStoryblokApi, useStoryblokState } from "@storyblok/react";
+import { useStoryblokState } from "@storyblok/react";
 
 export default function Attendance({story}) {
   story = useStoryblokState(story);
