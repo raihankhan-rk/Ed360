@@ -9,28 +9,28 @@ import { MutatingDots } from 'react-loader-spinner'
 
 export default function Assignments({children}) {
 
-  const [isLoading, setLoading] = useState(false);
+//   const [isLoading, setLoading] = useState(false);
   
-const loadingHandle = (e)=>{
-  setLoading(e);
-}
+// const loadingHandle = (e)=>{
+//   setLoading(e);
+// }
 
-const loginURL='https://ed360-teacher-backend.vercel.app/api/auth/login/'
+// const loginURL='https://ed360-teacher-backend.vercel.app/api/auth/login/'
 
-useEffect(() => {
-  loadingHandle(true);
-  const getPostData = async () => {
-    const {data: res} = await axios.get(loginURL);
-    console.log("Login DATA: ", res);
-    loadingHandle(false);
-  };
-  getPostData();
-}, []);
+// useEffect(() => {
+//   loadingHandle(true);
+//   const getPostData = async () => {
+//     const {data: res} = await axios.get(loginURL);
+//     console.log("Login DATA: ", res);
+//     loadingHandle(false);
+//   };
+//   getPostData();
+// }, []);
 
   return (
     <>
     <Body title="Assignments">
-    {isLoading?
+    {/* {isLoading?
         <div className='flex items-center justify-center'>
           <MutatingDots 
             height="100"
@@ -44,7 +44,7 @@ useEffect(() => {
             visible={true}
           />
         </div>: 
-    
+     */}
       <>
       <div className='p-8'>
         <CreateAssignment/>
@@ -54,7 +54,7 @@ useEffect(() => {
         <Prevass/>
       </div>
       </>
-  }
+  {/* } */}
     </Body>
     
   </>
