@@ -7,7 +7,7 @@ const baseURL = "https://ed360-student-backend.vercel.app/api/student/apyhub/"
 
 export default function AttendanceMeter(props) {
   
-  const [post, setPost] = useState([]);
+  // const [post, setPost] = useState([]);
 
   axios.post(baseURL, {
     present: '10',
