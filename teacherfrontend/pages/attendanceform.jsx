@@ -1,5 +1,4 @@
 import React,{ useEffect } from "react";
-import Primarybutt from "../components/utils/primarybutt";
 //import components
 import MCQ from "../components/utils/mcq";
 import SCQ from "../components/utils/scq";
