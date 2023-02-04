@@ -49,7 +49,7 @@ console.log({post})
       {console.log("post array before render: ",post)}
       <Body title="Notices">
         <div className='w-11/12 mx-auto'>
-          <Nodelete func={updatePost} load={loadingHandle} question="Create a Notice"/>
+          <Nodelete type='1' func={updatePost} load={loadingHandle} question="Create a Notice"/>
         </div>
         <h2 className='text-[2vw] text-primary font-medium font-[Montserrat] mt-[4rem] ml-[3rem] mb-[2rem]'>Notices</h2>
         

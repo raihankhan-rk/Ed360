@@ -5,13 +5,12 @@ import Image from "next/image";
 
 function Nodelete(props){
     const [showModal, setShowModal] = useState(false);
-    const [picMessage, setPicMessage] = useState(null);
     const [pic, setPic] = useState(null);
     const [formData, setFormData] = useState("");
 
 
-    const apiLink1 = 'https://ed360-backend.vercel.app/api/teacher/set_notice/';
-    const apiLink2 = 'https://ed360-teacher-backend.vercel.app/api/teacher/set_notice/';
+    const assignmentAPI = 'https://ed360-teacher-backend.vercel.app/api/teacher/set_assignment/';
+    const noticesAPI = 'https://ed360-teacher-backend.vercel.app/api/teacher/set_notice/';
 
   const  handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +22,7 @@ function Nodelete(props){
       isFile: pic===null? false:true,
       fileURL: pic
     };
-    const {data} = await axios.post(apiLink2, postData);
+    const {data} = await axios.post(props.type==='1'?noticesAPI:assignmentAPI, postData);
     console.log("server return data: ",data);
     props.func(postData)
     setFormData("");
