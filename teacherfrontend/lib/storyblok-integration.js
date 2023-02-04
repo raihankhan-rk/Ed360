@@ -9,7 +9,7 @@ export async function get_storyblok() {
     };
   
     const storyblokApi = getStoryblokApi();
-    let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    let data  = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
 
   return data;
 }
