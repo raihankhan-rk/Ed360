@@ -33,7 +33,7 @@ def register_auth_routes(oauth):
         token = oauth.auth0.authorize_access_token()
         state[0] = request.args.get("code")
         session["user"] = token
-        return state
+        return session["user"]
 
     @auth_bp.route('/logout/')
     def logout():
