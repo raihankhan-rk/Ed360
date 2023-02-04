@@ -1,4 +1,4 @@
-import React,{ useEffect } from "react";
+import React from "react";
 //import components
 import MCQ from "../components/utils/mcq";
 import SCQ from "../components/utils/scq";
