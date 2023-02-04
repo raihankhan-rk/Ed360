@@ -1,6 +1,7 @@
 import Head from "next/head";
 import AttendanceConfig from "../components/attendanceconfig";
 import styles from "../styles/Home.module.css";
+import { get_storyblok } from "../lib/storyblok-integration";
 
 import { getStoryblokApi, useStoryblokState } from "@storyblok/react";
 
@@ -24,16 +25,8 @@ export default function Attendance({story}) {
 }
 
 export async function getStaticProps() {
-  let slug = "attendance";
-
-  // load the draft version
-  let sbParams = {
-    version: "draft", // or 'published'
-  };
-
-  const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-  console.log(data);
+  
+  let { data } = await get_storyblok()
 
   return {
     props: {
