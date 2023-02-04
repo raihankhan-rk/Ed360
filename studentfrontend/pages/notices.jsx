@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 
-export default function notices() {
+export default function Notices() {
 
   const baseURL = "https://ed360-backend.vercel.app/api/teacher/noticeboard/";
 
