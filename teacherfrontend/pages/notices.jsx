@@ -22,8 +22,9 @@ export default function Notices() {
     loadingHandle(true);
     const getPostData = async () => {
       const {data: res} = await axios.get(baseURL);
-      setPost(res);
-      console.log(res);
+      console.log("Post RES: ", res);
+      setPost(res.notices);
+      console.log("Response: ",res);
       loadingHandle(false);
     };
     getPostData();
@@ -31,7 +32,10 @@ export default function Notices() {
 
   const updatePost = (newPost) => {
     console.log("function call working: ", newPost);
+    console.log("Post: ", post);
+    console.log("Post new: ", newPost);
     setPost([...post, newPost]);
+    console.log("Post update succcess: ", post);
     loadingHandle(false);
   }
 
@@ -63,7 +67,7 @@ console.log({post})
             visible={true}
           />
         </div>: null}
-        
+        {console.log("YAY: ", post)}
           <Notice notice={post}/>
             {/* <Notice notice="Kal se tum logo ka prayer hoyenga aur sab 9:10 ke pehle andar chahiye. Jo nhi ayega wo maadarchod Kal se tum logo ka prayer hoyenga aur sab 9:10 ke pehle andar chahiye. Jo nhi ayega wo maadarchod
 

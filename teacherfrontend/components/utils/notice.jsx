@@ -6,9 +6,9 @@ import React from "react";
 
 function Notice(props){
     const resp = props.notice;
-    console.log("noticesssss: ", resp.notices);
+    console.log("noticesssss: ", resp);
     // complete array of notices is passed as props
-    const noticeArray = resp.notices || [];
+    const noticeArray = resp || [];
     console.log("noticeArray: ", noticeArray);
     
     return <div className="w-11/12 mx-auto my-[2rem]">
