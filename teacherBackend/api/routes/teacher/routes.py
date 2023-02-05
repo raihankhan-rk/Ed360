@@ -65,7 +65,7 @@ def get_assignments():
     if request.method == 'post' or request.method == 'POST':
         resp = request.get_json()
         assignmentsAssigned = AssignmentList()
-        teacher = Teachers.objects(name=resp['name']).first()
+        teacher = Teachers.objects(username=resp['name']).first()
         for assignmentOID in teacher.assignments:
             assignmentOID = str(assignmentOID)
             assignmentOBJ = Assignments.objects(pk=assignmentOID).first()
