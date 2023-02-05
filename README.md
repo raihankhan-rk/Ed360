@@ -11,6 +11,8 @@
 
 🟢 **GitHub Repo** - https://github.com/raihankhan-rk/Ed360
 
+🟢 **Postman Public Workspace** - https://www.postman.com/a-roy/workspace/ed360
+
 ## 🔰 What is the Problem?
 
 There are several problems that students face on a day to day basis that affect their academic success.
