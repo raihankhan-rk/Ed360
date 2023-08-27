@@ -46,7 +46,7 @@ export default function Attendanceform({ blok }) {
 
         <div className="flex flex-col justify-between max-md:flex-col gap-5 mx-8 my-5">
           <div className="flex flex-col justify-between max-md:flex-col gap-5">
-            {blok.elements.map((nestedBlok) => (
+            {blok?.elements.map((nestedBlok) => (
               <StoryblokComponent className='' blok={nestedBlok} key={nestedBlok._uid} />
             ))}
             {/* <button

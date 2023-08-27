@@ -9,8 +9,8 @@ export async function get_storyblok() {
     };
   
     const storyblokApi = getStoryblokApi();
-    let resp  = await storyblokApi.get(`cdn/stories/${slug}`, sbParams)
-    let data = resp.data
+    let resp  = await storyblokApi?.get(`cdn/stories/${slug}`, sbParams)
+    let data = resp?.data
     console.log(data)
 
   return data;
